@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;500;700&family=Montserrat&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+      to right,
+      hsl(266, 100%, 13%, 50%),
+      hsl(288, 98%, 79%, 50%)
+    ),
+    url("./Train\ Crossing.png");
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: left bottom;
+}
+
+app-root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  align-content: center;
+}

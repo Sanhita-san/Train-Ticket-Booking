@@ -1,0 +1,75 @@
+<div id="left">
+  <header>
+    <h1>Book Train Tickets</h1>
+  </header>
+
+  <div id="input">
+    <fieldset>
+      <legend>Select Number of Seats</legend>
+      <button class="btn subtract-btn" (click)="subtract()">
+        <span class="material-symbols-outlined"> remove </span>
+      </button>
+      <input
+        type="number"
+        name="seats"
+        id="no-of-seats"
+        min="1"
+        max="{{ max }}"
+        value="1"
+      />
+      <button class="btn add-btn" (click)="add()">
+        <span class="material-symbols-outlined"> add </span>
+      </button>
+    </fieldset>
+  </div>
+
+  <div id="info">
+    <p>Seats Availabe : {{ seatsLeft }}</p>
+    <p>You may select {{ seatsSelected() }} seat(s) only</p>
+    <p>
+      To get your preferred seats select from the available seats and proceed to
+      confirm.
+    </p>
+    <button class="submit-btn" (click)="book()">Book Now</button>
+  </div>
+</div>
+
+<div id="right">
+  <div id="seats-info">
+    <div id="train-seats">
+      <div *ngFor="let seat of seats">
+        <input
+          type="checkbox"
+          name="seat"
+          id="{{ seat.seatNo }}"
+          value="{{ seat.seatNo }}"
+          [disabled]="seat.status == 'unavailable' ? true : false"
+          (change)="select($event)"
+        />
+        <label
+          class="seat {{ seat.status }}"
+          title="{{
+            seat.status == 'available'
+              ? seat.seatNo
+              : 'The seat has already been taken'
+          }}"
+          for="{{ seat.seatNo }}"
+          >{{ seat.seatNo }}</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="modal">
+    <div>
+      <h1 class="modal-heading">
+        <span class="material-symbols-outlined"> check_circle </span>
+        Confirmation!
+      </h1>
+      <p class="modal-body"></p>
+      <button class="close btn" (click)="close()">
+        <span class="material-symbols-outlined"> close </span>
+      </button>
+    </div>
+  </div>
+</div>
